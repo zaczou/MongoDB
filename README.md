@@ -2,7 +2,10 @@
 
 ```python
 from pymongo import MongoClient
+无密码连接
 connection = MongoClient()
+有密码连接
+conn = MongoClient("10.10.1.114:10321", username="xx", password="xx", authSource="admin")
 db = connection.mydb #连接mydb数据库，没有则自动创建
 test = db.test  ## 使用test集合，没有则自动创建
 ```
@@ -24,7 +27,7 @@ for i in test.find({"name":"zy"}):
 	
 # 更新数据
 ```python
-test.update({"name":"zy"}, {"$set":{"age":26}})
+test.update_one({"name":"zy"}, {"$set":{"age":26}})
 ```
 
 # 删除数据
